@@ -1,0 +1,17 @@
+
+img {
+	height: auto;
+	width: 60%;
+	margin: 4rem auto;
+	margin-left: 20rem;
+	align-items: center;
+	border-radius: 10px;
+}
+
+@media screen and (max-width: 1200px){
+	img {
+	width: 100%;
+	margin: 2rem auto;
+	margin-left: 0;
+}
+}

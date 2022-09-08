@@ -1,0 +1,289 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: 'Nunito', sans-serif;
+	text-decoration: none;
+}
+
+body {
+	background-color: #94D9EA;
+}
+
+.main-content {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	height: 100%;
+	width: 80%;
+	margin: 2rem auto;
+}
+
+.left-section {
+	grid-column: span 2;
+	height: 100%;
+	background-color: #00324A;
+}
+
+.right-section {
+	grid-column: span 4;
+	height: 100%;
+	background-color: #f7f7f7;
+}
+
+.left-content {
+	padding: 2rem 3rem;
+}
+
+
+	/*PROFILE*/
+.profile {
+	width: 100%;
+	border-bottom: 1px solid #002333;
+}
+
+.image {
+	width: 80%;
+	text-align: center;
+}
+.profile img {
+	width: 100%;
+	height: 250px;
+	border-radius: 50%;
+	border: 8px solid #002333;
+}
+
+.name {
+	font-size: 1.5rem;
+	color: white;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	padding: 1.2rem 0;
+}
+
+.career {
+	font-size: 1rem;
+	color: #94D9EA;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	padding-bottom: 1rem;
+}
+
+
+.main-title {
+	font-size: 1.5rem;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	color: #f7f7f7ec;
+	padding-top: 3rem;
+}
+
+	/*CONTACTS*/
+.contact-info ul {
+	padding-top: 1rem;
+}
+
+.contact-info ul li {
+	padding: .4rem 0;
+	display: flex;
+	align-items: center;
+	color: #2D9CDB;
+	list-style: none;
+}
+
+.contact-info ul li i {
+	padding-right: 1rem;
+	font-size: 1.2rem;
+	color: #2D9CD8;
+	list-style: none;
+}
+
+.contact-info a {
+	color: #2D9CD8;
+}
+
+/*SKILLS*/
+
+.skill-section ul {
+	padding-top: 1rem;
+}
+
+.skill-section ul li {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	padding: .4rem 0;
+}
+
+.skill-title {
+	text-transform: uppercase;
+	color: #f7f7f7;
+	font-size: 1rem;
+}
+
+
+/*SOCIAL*/
+.social ul {
+	padding-top: 1rem;
+}
+
+.social ul li {	
+	padding: .4rem 0;
+	display: flex;
+	align-items: center;
+	color: #2D9CDB;
+	
+}
+
+.social i {
+	padding-right: 1rem;
+	font-size: 1.2rem;
+	color: #2D9CD8;
+}
+
+.social a {
+	color: #2D9CD8;
+}
+
+
+
+/*SECOND/RIGHT SECTION*/
+
+.right-content {
+	padding: 2rem 0 2rem 2rem;
+}
+
+.right-title {
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	color: #2F80ED;
+	margin-bottom: 1.2rem;
+	position: relative;
+}
+
+.right-title::after {
+	content: "";
+	position: absolute;
+	width: 60%;
+	height: .1rem;
+	background-color: #2D9CDB;
+	border-radius: 12px;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.para {
+	line-height: 1.8rem;
+	font-size: 1.1rem;
+	word-spacing: 0.3px;
+}
+
+
+.about {
+	padding-bottom: 2rem;	
+}
+
+
+.timeline {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.tl-title {
+	letter-spacing: 1px;
+	font-size: 1.3rem;
+	color: #002333;
+	text-transform: uppercase;
+}
+
+.tl-title-2 {
+	letter-spacing: 1px;
+	font-size: 1.3rem;
+	color: #2D9CDB;
+	text-transform: uppercase;
+	
+}
+
+.tl-content {
+	border-left: 1px solid #ccc;
+	padding-left: 2rem;
+	position: relative;
+	padding-bottom: 2.5rem;
+	right: 2rem;	
+}
+
+.tl-title-2::before {
+	content: "";
+	position: absolute;
+	width: .7rem;
+	height: .7rem;
+	background-color: #2D9CDB;
+	border-radius: 50%;
+	transform: translateX(-50%);
+	left: 0;
+}
+
+
+/*Media Querries*/
+
+@media screen and (max-width: 823px) {
+	.right-title::after{
+		width: 40%;
+	}
+}
+
+@media screen and (max-width: 681px) {
+	.right-title::after{
+		width: 30%;
+	}
+}
+
+@media screen and (max-width: 780px) {
+	.timeline{
+		grid-template-columns: repeat(1, 1fr);
+	}
+}
+
+@media screen and (max-width: 780px) {
+	.timeline{
+		grid-template-columns: repeat(1, 1fr);
+	}
+}
+
+
+@media screen and (max-width: 780px) {
+	.left-section{
+		grid-column: span 3
+	}
+	.right-section{
+		grid-column: span 4;
+	}
+}
+
+
+/*EDIT THE FOLLOWING TO SUIT YOUR DESIRE*/
+
+@media screen and (max-width: 1200px) {
+	.main-content{
+		grid-template-columns: repeat(1, 1fr);
+	}
+	.profile img{
+		/*width: 40%;*/
+	}
+}
+
+
+@media screen and (max-width: 700px) {
+	.profile img{
+		width: 60%;
+		height: 100%;
+	}
+}
+
+
+@media screen and (max-width: 390px) {
+	.name{
+		font-size: 1.5rem;
+	}
+}

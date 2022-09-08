@@ -1,0 +1,29 @@
+
+.about_cyclistic {
+	background-color: white;
+	height: 100%;
+	width: 50%;
+	margin: 2rem auto;
+	border-radius: 10px;
+}
+
+.about_cyclistic h3 {
+	font-size: 40px;
+}
+
+.about_cyclistic p {
+	font-size: 30px;
+}
+
+
+
+@media screen and (max-width: 780px){
+	.about_cyclistic h3 {
+	font-size: 30px;
+	text-align: center;
+}
+.about_cyclistic p {
+	font-size: 25px;
+	text-align: center;
+}
+}

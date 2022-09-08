@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	
+	<meta name="viewport" content="width=device-width, intial-scale=1.0">
+	<title>Cyclistic Bike Share Project</title>
+	<link rel="icon" type="image/x-icon" href="../../images/favicon.ico">
+	<link rel="icon" type="image/x-icon" href="images/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="google_analytics.css">
+</head>
+<body>
+
+		<div class="nav">
+		<ul>  
+			<li><a href="../../index.html">HOME</a></li>  
+			<li><a href="../../index.html.#about_me">ABOUT</a></li>  
+			<li> <a href="../projects.html">PROJECTS</a></li>  
+			<!--<li><a href="../../CV/resume.html">VIEW CV</a></li>-->
+			<li><a href="../../CV/resume.html">VIEW CV</a></li>
+		</ul>  
+	</div>
+
+	<div class="topic">
+	<h1>Google Data Analytics Capstone Project</h1>
+	</div>
+<section class="main">
+	<div class="content">
+	<h3>INTRODUCTION</h3>
+	<p>This project was the final requirement to earn the <strong><i>Google Data Analytics Professional Certificate.</i></strong><br>I worked on the Google Data Analytics Capstone Project, Track 1, Case Study 1.</p>
+	<span><strong>Case Study:</strong> How Does a Bike-Share Navigate Speedy Success?</span>
+
+	<h3>Scenario</h3>
+	<p> In this case study, I performed many real-world tasks of a junior data analyst. I worked for a fictional company, Cyclistic, a bike-share company in Chicago and met different characters and team members. In order to answer the key business questions, I followed the steps of data analysis process: <strong>Ask, Prepare, Process, Analyze, Share, and Act</strong>. The director of marketing believes the company’s future success depends on maximizing the number of annual memberships. Therefore, my team wants to understand how casual riders and annual members use Cyclistic bikes differently. From these insights, we would design a new marketing strategy to convert casual riders into annual members.
+	Click here to know more about the company <a href="about_cyclistic.html" target="_blank" style="color: blue">Cyclistic.</a></p>
+	<p>Below are the process I followed in Cleaning, Organizing, Analyzing and Visualizing the data, along with my final suggestions and summary of the data.</p>
+	
+	<h3>Business Objectives</h3>
+	<ol type="i"><li>How do annual members and casual riders use Cyclistic bikes differently?</li>
+	<li>Why would casual riders buy Cyclistic annual memberships?</li><li>How can Cyclistic use digital media to influence casual riders to become members?</li>
+	</ol>
+<strong class="quick_links">Quick Links:</strong>
+	<ul  class="content_table">
+		<li><a href="#prepare">Prepare Data</a></li>
+		<li><a href="#R">Processing in R</a></li>
+		<li><a href="#R_viz">Visualization in R</a></li>
+		<li><a href="#Tableau_viz">Processing in Tableau</a></li>
+		<li><a href="#tab_dashboards">Tableau Dashboards</a></li>
+		<li><a href="#conclusion">Answering Business Questions</a></li>
+	</ul>
+	
+
+	<h3 id="prepare">Prepare Data</h3>
+	<p>I started by downloading the latest dataset for the project from <a href="https://divvy-tripdata.s3.amazonaws.com/index.html" target="_blank" style="color: blue">divvy-tripdata</a>. I downloaded the most recent one year dataset from July 2021 to June 2022. All the dataset are in .CSV format. I created a folder to store the files.</p>
+	<h3 id="R">Processing in R</h3>
+	<span>You can view my full R programming codes for this capstone project on my repository in <a href="https://github.com/MikChuma/Google-Data-Analytics-Capstone-Project/blob/main/R-Codes.r" target="_blank" style="color: blue">GitHub</a>.</span>
+	<span>Having arranged the data according to data month in its folder. I opened RStudio and chose the session directory for the files. I started processing the data in the following steps.</span>
+	<ol type="1">
+	<li>Installed and Load all of the packages and libraries needed for the project: tidyverse, lubridate, hms, data.table.</li> 
+
+    <li>Uploaded all of the original data from the data source divvy-tripdata into R using read_csv function to upload all individual csv files and save them in separate data frames. For July 2021 data I saved it into jul21, August 2021 to aug21 till June 2022 which I save to jun22.</li> 
+
+    <li>Combined the 12 months (July 2021 to June 2022) of data together using rbind to create a one year view and parsed it to a new data frame named, "july21_jun22_trip".</li>
+
+    <li>I used the remove() function to remove individual month data frame from the environment pane of Rstudio to clear up space.</li>
+
+    <li>Created new data frames by parsing july21_jun22_trip to one_year_trip to retain original data. The new data frame, "one_year_trip" would contain all of my new columns.</li>
+   
+    <li>Created new columns on the "one_year_trip" data frame for:</li>
+    <ol type="i">
+    	<li>Ride Length - did this by subtracting end_at time from start_at time</li>
+    	<li>Day of the Week</li>
+    	<li>Date</li>
+    	<li>Month</li>     
+    	<li>Season - Spring, Summer, Winter or Fall</li>
+    	<li>Year</li>
+    </ol>
+    
+    <li>Cleaned the data by:</li>
+    <ol type="i">
+    	<li>Removing duplicate rows using distinct() function</li>
+    	<li>Remove rows with NA values (blank rows) using na.omit() function</li>
+    	<li>Remove where ride_length is 0 or negative (ride_length should be a positive number)</li>
+    	<li>Remove unnecessary columns: ride_id, start_station_id, end_station_id, start_lat, start_long, end_lat, end_lng.</li>
+	</ol>
+
+    <li>Calculated Total Rides for:</li>
+    <ol type="i">
+    	<li>Total number of rides which was just the row count = 5, 885, 392 - did this with count() function.</li>
+
+    	<li>Member type using sum() function which shows - Casual riders = 2, 550, 576  vs. Annual members = 3, 334, 816.</li>
+
+    	<li>Total number based on type of Bike - docked_bike = 251,856; classic_bike = 3,180,202; electric_bike = 2,453,334.</li>
+	</ol>
+
+    <li>Calculated Average Ride Length for:</li>
+    <ol type="i">
+    	<li>Total average ride length using mean() function = 18.54485mins</li>   
+    	<li>Total ride length by all users using sum() function = 109143683 mins</li> 	
+	</ol>
+
+		<li>Then, I viewed the data I have prepared and processed using View() function.</li>
+		<li>Downloaded the data frame using fwrite() function into my local directory which I would use for visualization later in Tableau.</li>
+	</ol>
+
+
+	<h3 id="R_viz">Visualization in R</h3>
+	<p>I ran few visualization on RStudio using ggplot and geom_bar functions. But because of the large size of the data and to put my skills to test I switched to Tableau for more Visualization effects.</p>
+	
+	<div class="r_viz">
+		<img src="viz/R/Rplot_Total_Monthly_Ride.png" alt="Monthly Ride">
+		<img src="viz/R/Rplot_Total_Seasonal_Ride.png" alt="Seasonal Ride">
+		<img src="viz/R/Rplot_Total_Weekly_Ride.png" alt="Weekly Ride">
+	</div>
+
+
+	<h3 id="Tableau_viz">Visualization in Tableau</h3>
+	<p>I opened Tableau public and uploaded the cleaned dataset I downloaded from RStudio</p>
+	<p>To view my completed dashboard on Tableau public click <a href="https://public.tableau.com/app/profile/mikchuma/viz/shared/CMYSPHY69" target="_blank" style="color: blue">here.</a></p>
+	<p>Created different graphs on Tableau which include:</p>
+	<ol type="i">
+	<li>Total Rides by all users(Member & Casual riders)</li>
+	<li>Total Rides by Bike Type</li>
+	<li>Total Rides by Weekday</li>
+	<li>Total Rides by Season</li>
+	<li>Total Rides by Month</li>
+	<li>Ride Length by all users(Member & Casual riders)</li>
+	<li>Ride Length by Weekday</li>
+	<li>Ride Length by Month</li>
+	</ol>
+
+
+	<h3 id="tab_dashboards">Tableau Dashboards</h3>
+	<p>Below are summary of my Data Analysis as generated from Tableau Dashboard</p>
+	
+		<div class="all">
+			<img src="viz/Tableau/Total_Rides.PNG" alt="Total Rides">
+			<img src="viz/Tableau/Total_Ride_length.PNG" alt="Ride length">
+		</div>
+
+		<div class="viz">
+			<img src="viz/Tableau/Ride_type.PNG" alt="Ride type">
+			<img src="viz/Tableau/Total_Weekly_ride.PNG" alt="Total Weekly Ride">
+			<img src="viz/Tableau/Total_Monthly_ride.PNG" alt="Total Monthly ride">
+			<img src="viz/Tableau/Seasonal_Ride.PNG" alt="Seasonal Ride">
+			<img src="viz/Tableau/Weekly_Ride_length.PNG" alt="Weekly Ride length">
+			<img src="viz/Tableau/Monthly_Ride_length.PNG" alt="Monthly Ride length">
+			<img src="viz/Tableau/Seasonal_Ride_Length.PNG" alt="Seasonal Ride length">
+		</div>
+
+		<div class="conclusion">
+		<h3 id="conclusion">Answering the Business Questions</h3>
+		<ol>
+			<li><strong>How do annual members and casual riders use Cyclistic bikes differently?</strong></li>
+			<p>This is evident in the weekly ride and bike type. Casual riders are more active during weekends while members are almost the same but has more rides than casuals who spend more time on their trips. It was observed that Members did not use docked bike during the period of analysis and docked bikes recorded least use among casuals.</p>
+
+			<li><strong>Why would casual riders buy Cyclistic annual memberships?</strong></li>
+			<p>If Casuals riders buy Cyclistic annual memberships, they would have the opportunity to enjoy more ride during festive season such as Chritmas and New Year festivals, as it was seen that members have more rides between these periods of November to February</p>
+			<li><strong>How can Cyclistic use digital media to influence casual riders to become members?</strong></li>
+			<p>Cyclistic has to create more awareness during festive periods, that's between Novemebr and March, as casuals are developing interest to ride more they would see reasons to become members</p>
+		</ol>
+		</div>
+	</div>
+	</section>
+		
+	<button onclick="topFunction()" id="back-to-top" title="back-to-top" class="back-to-top">Back To Top</button>
+
+
+
+<script>
+//Get the button
+var mybutton = document.getElementById("back-to-top");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+</body>
+</html>
